@@ -1,7 +1,6 @@
 // pages/RoadmapDisplay.js
 import React from 'react';
-import { Download, RefreshCw, Book, Code, Briefcase, Target, CheckCircle, Clock, ArrowRight } from 'lucide-react';
-
+import { RefreshCw, Book, Code, Briefcase, Target, CheckCircle, Clock, ArrowRight } from 'lucide-react';
 const RoadmapDisplay = ({ roadmap, onRegenerate, onStartNew }) => {
   // Icon mapping for milestones
   const getIcon = (iconName) => {
@@ -14,19 +13,7 @@ const RoadmapDisplay = ({ roadmap, onRegenerate, onStartNew }) => {
     return icons[iconName] || Book;
   };
 
-  // Mock PDF download function
-  const handleDownloadPDF = () => {
-    // In production, this would call the Spring Boot API
-    alert('PDF download will be available after backend integration');
-    
-    // Future implementation:
-    // const pdf = await apiService.downloadPDF(roadmap.id);
-    // const url = window.URL.createObjectURL(pdf);
-    // const a = document.createElement('a');
-    // a.href = url;
-    // a.download = `career-roadmap-${roadmap.userName}.pdf`;
-    // a.click();
-  };
+
 
   return (
     <div className="min-h-[80vh] py-12 px-4">
@@ -44,13 +31,6 @@ const RoadmapDisplay = ({ roadmap, onRegenerate, onStartNew }) => {
 
         {/* Action Buttons */}
         <div className="flex justify-center gap-4 mb-12">
-          <button
-            onClick={handleDownloadPDF}
-            className="flex items-center px-6 py-3 bg-yellow-500 text-black rounded-lg font-semibold hover:bg-yellow-400 transition-colors"
-          >
-            <Download className="mr-2" size={20} />
-            Download PDF
-          </button>
           <button
             onClick={onRegenerate}
             className="flex items-center px-6 py-3 border border-yellow-500 text-yellow-500 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors"
@@ -146,25 +126,6 @@ const RoadmapDisplay = ({ roadmap, onRegenerate, onStartNew }) => {
               </div>
             );
           })}
-        </div>
-
-        {/* Completion Message */}
-        <div className="text-center mt-16 p-8 bg-gradient-to-r from-yellow-500/10 to-yellow-500/5 rounded-xl border border-yellow-500/30">
-          <h2 className="text-2xl font-bold text-yellow-500 mb-4">
-            🎯 Ready to Start Your Journey?
-          </h2>
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            This roadmap is your personalized guide to success. Follow each milestone, 
-            track your progress, and remember that every expert was once a beginner.
-          </p>
-          <div className="flex justify-center gap-4">
-            <button className="px-6 py-3 bg-yellow-500 text-black rounded-lg font-semibold hover:bg-yellow-400 transition-colors">
-              Track Progress
-            </button>
-            <button className="px-6 py-3 border border-yellow-500 text-yellow-500 rounded-lg hover:bg-yellow-500 hover:text-black transition-colors">
-              Find Mentors
-            </button>
-          </div>
         </div>
       </div>
     </div>
